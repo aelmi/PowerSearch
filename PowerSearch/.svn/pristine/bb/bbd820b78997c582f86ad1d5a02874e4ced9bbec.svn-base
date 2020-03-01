@@ -1,0 +1,223 @@
+﻿namespace FileSearcher
+{
+    partial class frmRepetitive
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.pnlRepetitive = new System.Windows.Forms.Panel();
+            this.pnlRepetitiveLeft = new System.Windows.Forms.Panel();
+            this.pnlRepetitiveTop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSelectFile = new System.Windows.Forms.Button();
+            this.txtFilename = new System.Windows.Forms.TextBox();
+            this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.gcRepetitive = new DevExpress.XtraGrid.GridControl();
+            this.gvRepetitive = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnProcess = new System.Windows.Forms.Button();
+            this.btnFilterEditor = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.pnlRepetitive.SuspendLayout();
+            this.pnlRepetitiveLeft.SuspendLayout();
+            this.pnlRepetitiveTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcRepetitive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvRepetitive)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pnlRepetitive
+            // 
+            this.pnlRepetitive.Controls.Add(this.gcRepetitive);
+            this.pnlRepetitive.Controls.Add(this.pnlRepetitiveLeft);
+            this.pnlRepetitive.Controls.Add(this.pnlRepetitiveTop);
+            this.pnlRepetitive.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRepetitive.Location = new System.Drawing.Point(0, 0);
+            this.pnlRepetitive.Name = "pnlRepetitive";
+            this.pnlRepetitive.Size = new System.Drawing.Size(1048, 747);
+            this.pnlRepetitive.TabIndex = 1;
+            // 
+            // pnlRepetitiveLeft
+            // 
+            this.pnlRepetitiveLeft.Controls.Add(this.fastColoredTextBox1);
+            this.pnlRepetitiveLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRepetitiveLeft.Location = new System.Drawing.Point(0, 113);
+            this.pnlRepetitiveLeft.Name = "pnlRepetitiveLeft";
+            this.pnlRepetitiveLeft.Size = new System.Drawing.Size(1048, 634);
+            this.pnlRepetitiveLeft.TabIndex = 1;
+            // 
+            // pnlRepetitiveTop
+            // 
+            this.pnlRepetitiveTop.Controls.Add(this.btnFilterEditor);
+            this.pnlRepetitiveTop.Controls.Add(this.btnFind);
+            this.pnlRepetitiveTop.Controls.Add(this.btnProcess);
+            this.pnlRepetitiveTop.Controls.Add(this.label1);
+            this.pnlRepetitiveTop.Controls.Add(this.btnSelectFile);
+            this.pnlRepetitiveTop.Controls.Add(this.txtFilename);
+            this.pnlRepetitiveTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlRepetitiveTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlRepetitiveTop.Name = "pnlRepetitiveTop";
+            this.pnlRepetitiveTop.Size = new System.Drawing.Size(1048, 113);
+            this.pnlRepetitiveTop.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 17);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Select File";
+            // 
+            // btnSelectFile
+            // 
+            this.btnSelectFile.Location = new System.Drawing.Point(539, 17);
+            this.btnSelectFile.Name = "btnSelectFile";
+            this.btnSelectFile.Size = new System.Drawing.Size(40, 31);
+            this.btnSelectFile.TabIndex = 4;
+            this.btnSelectFile.Text = "...";
+            this.btnSelectFile.UseVisualStyleBackColor = true;
+            this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
+            // 
+            // txtFilename
+            // 
+            this.txtFilename.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilename.Location = new System.Drawing.Point(102, 19);
+            this.txtFilename.Name = "txtFilename";
+            this.txtFilename.Size = new System.Drawing.Size(431, 28);
+            this.txtFilename.TabIndex = 3;
+            // 
+            // fastColoredTextBox1
+            // 
+            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.fastColoredTextBox1.BackBrush = null;
+            this.fastColoredTextBox1.CharHeight = 18;
+            this.fastColoredTextBox1.CharWidth = 10;
+            this.fastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.fastColoredTextBox1.IsReplaceMode = false;
+            this.fastColoredTextBox1.LineNumberColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.fastColoredTextBox1.Name = "fastColoredTextBox1";
+            this.fastColoredTextBox1.Paddings = new System.Windows.Forms.Padding(0);
+            this.fastColoredTextBox1.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.fastColoredTextBox1.Size = new System.Drawing.Size(1048, 634);
+            this.fastColoredTextBox1.TabIndex = 0;
+            this.fastColoredTextBox1.Zoom = 100;
+            // 
+            // gcRepetitive
+            // 
+            this.gcRepetitive.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gcRepetitive.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gcRepetitive.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gcRepetitive.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gcRepetitive.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gcRepetitive.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gcRepetitive.Location = new System.Drawing.Point(525, 113);
+            this.gcRepetitive.MainView = this.gvRepetitive;
+            this.gcRepetitive.Name = "gcRepetitive";
+            this.gcRepetitive.Size = new System.Drawing.Size(523, 634);
+            this.gcRepetitive.TabIndex = 2;
+            this.gcRepetitive.UseEmbeddedNavigator = true;
+            this.gcRepetitive.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvRepetitive});
+            // 
+            // gvRepetitive
+            // 
+            this.gvRepetitive.GridControl = this.gcRepetitive;
+            this.gvRepetitive.Name = "gvRepetitive";
+            // 
+            // btnProcess
+            // 
+            this.btnProcess.Location = new System.Drawing.Point(641, 8);
+            this.btnProcess.Name = "btnProcess";
+            this.btnProcess.Size = new System.Drawing.Size(96, 49);
+            this.btnProcess.TabIndex = 6;
+            this.btnProcess.Text = "Process";
+            this.btnProcess.UseVisualStyleBackColor = true;
+            this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
+            // 
+            // btnFilterEditor
+            // 
+            this.btnFilterEditor.Location = new System.Drawing.Point(743, 8);
+            this.btnFilterEditor.Name = "btnFilterEditor";
+            this.btnFilterEditor.Size = new System.Drawing.Size(96, 49);
+            this.btnFilterEditor.TabIndex = 6;
+            this.btnFilterEditor.Text = "Filter Editor";
+            this.btnFilterEditor.UseVisualStyleBackColor = true;
+            this.btnFilterEditor.Click += new System.EventHandler(this.btnFilterEditor_Click);
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(102, 60);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(77, 40);
+            this.btnFind.TabIndex = 6;
+            this.btnFind.Text = "Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // frmRepetitive
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1048, 747);
+            this.Controls.Add(this.pnlRepetitive);
+            this.Name = "frmRepetitive";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Repetitive";
+            this.Load += new System.EventHandler(this.frmRepetitive_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.frmRepetitive_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.frmRepetitive_DragEnter);
+            this.pnlRepetitive.ResumeLayout(false);
+            this.pnlRepetitiveLeft.ResumeLayout(false);
+            this.pnlRepetitiveTop.ResumeLayout(false);
+            this.pnlRepetitiveTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcRepetitive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvRepetitive)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel pnlRepetitive;
+        private System.Windows.Forms.Panel pnlRepetitiveLeft;
+        private System.Windows.Forms.Panel pnlRepetitiveTop;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSelectFile;
+        private System.Windows.Forms.TextBox txtFilename;
+        private FastColoredTextBoxNS.FastColoredTextBox fastColoredTextBox1;
+        private DevExpress.XtraGrid.GridControl gcRepetitive;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvRepetitive;
+        private System.Windows.Forms.Button btnProcess;
+        private System.Windows.Forms.Button btnFilterEditor;
+        private System.Windows.Forms.Button btnFind;
+    }
+}

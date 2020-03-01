@@ -1,0 +1,326 @@
+﻿namespace FileSearcher
+{
+    partial class frmMain
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.pnlExtension = new System.Windows.Forms.Panel();
+            this.lbFileExtension = new System.Windows.Forms.ListBox();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtExtension = new System.Windows.Forms.TextBox();
+            this.btnExtensionClear = new System.Windows.Forms.Button();
+            this.btnDelExtension = new System.Windows.Forms.Button();
+            this.btnAddExtension = new System.Windows.Forms.Button();
+            this.pnlFolder = new System.Windows.Forms.Panel();
+            this.lbFolder = new System.Windows.Forms.ListBox();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.btnSelectFolder = new System.Windows.Forms.Button();
+            this.txtFolder = new System.Windows.Forms.TextBox();
+            this.btnFolderClear = new System.Windows.Forms.Button();
+            this.btnDelFolder = new System.Windows.Forms.Button();
+            this.btnAddFolder = new System.Windows.Forms.Button();
+            this.gcFiles = new DevExpress.XtraGrid.GridControl();
+            this.gvFiles = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.pnlFiles = new System.Windows.Forms.Panel();
+            this.pnlSearch = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnLoadFileContent = new System.Windows.Forms.Button();
+            this.pnlExtension.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            this.pnlFolder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvFiles)).BeginInit();
+            this.pnlFiles.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pnlExtension
+            // 
+            this.pnlExtension.Controls.Add(this.lbFileExtension);
+            this.pnlExtension.Controls.Add(this.groupControl1);
+            this.pnlExtension.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlExtension.Location = new System.Drawing.Point(0, 0);
+            this.pnlExtension.Name = "pnlExtension";
+            this.pnlExtension.Size = new System.Drawing.Size(199, 649);
+            this.pnlExtension.TabIndex = 1;
+            // 
+            // lbFileExtension
+            // 
+            this.lbFileExtension.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbFileExtension.FormattingEnabled = true;
+            this.lbFileExtension.ItemHeight = 16;
+            this.lbFileExtension.Location = new System.Drawing.Point(0, 122);
+            this.lbFileExtension.Name = "lbFileExtension";
+            this.lbFileExtension.Size = new System.Drawing.Size(199, 527);
+            this.lbFileExtension.TabIndex = 1;
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.txtExtension);
+            this.groupControl1.Controls.Add(this.btnExtensionClear);
+            this.groupControl1.Controls.Add(this.btnDelExtension);
+            this.groupControl1.Controls.Add(this.btnAddExtension);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(199, 122);
+            this.groupControl1.TabIndex = 0;
+            this.groupControl1.Text = "File Extension";
+            // 
+            // txtExtension
+            // 
+            this.txtExtension.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExtension.Location = new System.Drawing.Point(12, 41);
+            this.txtExtension.Name = "txtExtension";
+            this.txtExtension.Size = new System.Drawing.Size(69, 28);
+            this.txtExtension.TabIndex = 1;
+            // 
+            // btnExtensionClear
+            // 
+            this.btnExtensionClear.Location = new System.Drawing.Point(12, 75);
+            this.btnExtensionClear.Name = "btnExtensionClear";
+            this.btnExtensionClear.Size = new System.Drawing.Size(159, 35);
+            this.btnExtensionClear.TabIndex = 0;
+            this.btnExtensionClear.Text = "Clear";
+            this.btnExtensionClear.UseVisualStyleBackColor = true;
+            this.btnExtensionClear.Click += new System.EventHandler(this.btnExtensionClear_Click);
+            // 
+            // btnDelExtension
+            // 
+            this.btnDelExtension.Location = new System.Drawing.Point(132, 39);
+            this.btnDelExtension.Name = "btnDelExtension";
+            this.btnDelExtension.Size = new System.Drawing.Size(39, 35);
+            this.btnDelExtension.TabIndex = 0;
+            this.btnDelExtension.Text = "-";
+            this.btnDelExtension.UseVisualStyleBackColor = true;
+            this.btnDelExtension.Click += new System.EventHandler(this.btnDelExtension_Click);
+            // 
+            // btnAddExtension
+            // 
+            this.btnAddExtension.Location = new System.Drawing.Point(87, 39);
+            this.btnAddExtension.Name = "btnAddExtension";
+            this.btnAddExtension.Size = new System.Drawing.Size(39, 35);
+            this.btnAddExtension.TabIndex = 0;
+            this.btnAddExtension.Text = "+";
+            this.btnAddExtension.UseVisualStyleBackColor = true;
+            this.btnAddExtension.Click += new System.EventHandler(this.btnAddExtension_Click);
+            // 
+            // pnlFolder
+            // 
+            this.pnlFolder.Controls.Add(this.lbFolder);
+            this.pnlFolder.Controls.Add(this.groupControl2);
+            this.pnlFolder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlFolder.Location = new System.Drawing.Point(199, 0);
+            this.pnlFolder.Name = "pnlFolder";
+            this.pnlFolder.Size = new System.Drawing.Size(494, 649);
+            this.pnlFolder.TabIndex = 2;
+            // 
+            // lbFolder
+            // 
+            this.lbFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbFolder.FormattingEnabled = true;
+            this.lbFolder.ItemHeight = 16;
+            this.lbFolder.Location = new System.Drawing.Point(0, 122);
+            this.lbFolder.Name = "lbFolder";
+            this.lbFolder.Size = new System.Drawing.Size(494, 527);
+            this.lbFolder.TabIndex = 1;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.btnSelectFolder);
+            this.groupControl2.Controls.Add(this.txtFolder);
+            this.groupControl2.Controls.Add(this.btnFolderClear);
+            this.groupControl2.Controls.Add(this.btnDelFolder);
+            this.groupControl2.Controls.Add(this.btnAddFolder);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl2.Location = new System.Drawing.Point(0, 0);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(494, 122);
+            this.groupControl2.TabIndex = 0;
+            this.groupControl2.Text = "Folder";
+            // 
+            // btnSelectFolder
+            // 
+            this.btnSelectFolder.Location = new System.Drawing.Point(449, 39);
+            this.btnSelectFolder.Name = "btnSelectFolder";
+            this.btnSelectFolder.Size = new System.Drawing.Size(40, 31);
+            this.btnSelectFolder.TabIndex = 2;
+            this.btnSelectFolder.Text = "...";
+            this.btnSelectFolder.UseVisualStyleBackColor = true;
+            this.btnSelectFolder.Click += new System.EventHandler(this.btnSelectFolder_Click);
+            // 
+            // txtFolder
+            // 
+            this.txtFolder.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFolder.Location = new System.Drawing.Point(12, 41);
+            this.txtFolder.Name = "txtFolder";
+            this.txtFolder.Size = new System.Drawing.Size(431, 28);
+            this.txtFolder.TabIndex = 1;
+            // 
+            // btnFolderClear
+            // 
+            this.btnFolderClear.Location = new System.Drawing.Point(330, 75);
+            this.btnFolderClear.Name = "btnFolderClear";
+            this.btnFolderClear.Size = new System.Drawing.Size(159, 35);
+            this.btnFolderClear.TabIndex = 0;
+            this.btnFolderClear.Text = "Clear";
+            this.btnFolderClear.UseVisualStyleBackColor = true;
+            this.btnFolderClear.Click += new System.EventHandler(this.btnFolderClear_Click);
+            // 
+            // btnDelFolder
+            // 
+            this.btnDelFolder.Location = new System.Drawing.Point(57, 75);
+            this.btnDelFolder.Name = "btnDelFolder";
+            this.btnDelFolder.Size = new System.Drawing.Size(39, 35);
+            this.btnDelFolder.TabIndex = 0;
+            this.btnDelFolder.Text = "-";
+            this.btnDelFolder.UseVisualStyleBackColor = true;
+            this.btnDelFolder.Click += new System.EventHandler(this.btnDelFolder_Click);
+            // 
+            // btnAddFolder
+            // 
+            this.btnAddFolder.Location = new System.Drawing.Point(12, 75);
+            this.btnAddFolder.Name = "btnAddFolder";
+            this.btnAddFolder.Size = new System.Drawing.Size(39, 35);
+            this.btnAddFolder.TabIndex = 0;
+            this.btnAddFolder.Text = "+";
+            this.btnAddFolder.UseVisualStyleBackColor = true;
+            this.btnAddFolder.Click += new System.EventHandler(this.btnAddFolder_Click);
+            // 
+            // gcFiles
+            // 
+            this.gcFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcFiles.Location = new System.Drawing.Point(0, 0);
+            this.gcFiles.MainView = this.gvFiles;
+            this.gcFiles.Name = "gcFiles";
+            this.gcFiles.Size = new System.Drawing.Size(404, 539);
+            this.gcFiles.TabIndex = 3;
+            this.gcFiles.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvFiles});
+            // 
+            // gvFiles
+            // 
+            this.gvFiles.GridControl = this.gcFiles;
+            this.gvFiles.Name = "gvFiles";
+            // 
+            // pnlFiles
+            // 
+            this.pnlFiles.Controls.Add(this.gcFiles);
+            this.pnlFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFiles.Location = new System.Drawing.Point(693, 110);
+            this.pnlFiles.Name = "pnlFiles";
+            this.pnlFiles.Size = new System.Drawing.Size(404, 539);
+            this.pnlFiles.TabIndex = 4;
+            // 
+            // pnlSearch
+            // 
+            this.pnlSearch.Controls.Add(this.btnLoadFileContent);
+            this.pnlSearch.Controls.Add(this.btnSearch);
+            this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSearch.Location = new System.Drawing.Point(693, 0);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(404, 110);
+            this.pnlSearch.TabIndex = 5;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(33, 22);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(148, 58);
+            this.btnSearch.TabIndex = 0;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnLoadFileContent
+            // 
+            this.btnLoadFileContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadFileContent.Location = new System.Drawing.Point(203, 22);
+            this.btnLoadFileContent.Name = "btnLoadFileContent";
+            this.btnLoadFileContent.Size = new System.Drawing.Size(148, 58);
+            this.btnLoadFileContent.TabIndex = 0;
+            this.btnLoadFileContent.Text = "Load Content";
+            this.btnLoadFileContent.UseVisualStyleBackColor = true;
+            this.btnLoadFileContent.Click += new System.EventHandler(this.btnLoadFileContent_Click);
+            // 
+            // frmMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1097, 649);
+            this.Controls.Add(this.pnlFiles);
+            this.Controls.Add(this.pnlSearch);
+            this.Controls.Add(this.pnlFolder);
+            this.Controls.Add(this.pnlExtension);
+            this.Name = "frmMain";
+            this.Text = "File Searcher";
+            this.pnlExtension.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            this.pnlFolder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvFiles)).EndInit();
+            this.pnlFiles.ResumeLayout(false);
+            this.pnlSearch.ResumeLayout(false);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel pnlExtension;
+        private System.Windows.Forms.ListBox lbFileExtension;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private System.Windows.Forms.Button btnExtensionClear;
+        private System.Windows.Forms.Button btnDelExtension;
+        private System.Windows.Forms.Button btnAddExtension;
+        private System.Windows.Forms.TextBox txtExtension;
+        private System.Windows.Forms.Panel pnlFolder;
+        private System.Windows.Forms.ListBox lbFolder;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private System.Windows.Forms.TextBox txtFolder;
+        private System.Windows.Forms.Button btnFolderClear;
+        private System.Windows.Forms.Button btnDelFolder;
+        private System.Windows.Forms.Button btnAddFolder;
+        private System.Windows.Forms.Button btnSelectFolder;
+        private DevExpress.XtraGrid.GridControl gcFiles;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvFiles;
+        private System.Windows.Forms.Panel pnlFiles;
+        private System.Windows.Forms.Panel pnlSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnLoadFileContent;
+    }
+}
+

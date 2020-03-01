@@ -1,0 +1,112 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PowerSearch
+{
+    public partial class frmRepetitive : Form
+    {
+        Dictionary<string, int> dictionary = new Dictionary<string, int>();
+        public frmRepetitive()
+        {
+            InitializeComponent();
+        }
+
+        private void frmRepetitive_Load(object sender, EventArgs e)
+        {
+            this.AllowDrop = true;
+            this.DragEnter += new DragEventHandler(frmRepetitive_DragEnter);
+            this.DragDrop += new DragEventHandler(frmRepetitive_DragDrop);
+
+            gvRepetitive.OptionsView.ShowAutoFilterRow = true;
+        }
+
+        private void frmRepetitive_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void frmRepetitive_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (File.Exists(files[0]))     //foreach (string file in files)
+            {
+                txtFilename.Text = files[0];
+                fastColoredTextBox1.Text = File.ReadAllText(txtFilename.Text);
+            }
+        }
+
+        private void btnSelectFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                fastColoredTextBox1.Text = File.ReadAllText(ofd.FileName);
+            }
+        }
+
+        private void btnProcess_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string curLine = string.Empty;
+                for (int i = 0; i < fastColoredTextBox1.Lines.Count; i++)
+                {
+                    curLine = fastColoredTextBox1.Lines[i].Trim();
+                    if (!string.IsNullOrEmpty(curLine))
+                    {
+                        if (dictionary.ContainsKey(curLine))
+                            dictionary[curLine] += 1;
+                        else
+                            dictionary.Add(curLine, 1);
+                    }
+                }
+                gcRepetitive.DataSource = getCustomDT(dictionary);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //throw;
+            }
+        }
+
+        private DataTable getCustomDT(Dictionary<string, int> dictionary)
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = "Repetitive";
+            dt.Columns.Add("Line", typeof(string));
+            dt.Columns.Add("Occurrence", typeof(string));
+            dt.Columns.Add("Length", typeof(string));
+
+            foreach (var d in dictionary)
+            {
+                DataRow dr = dt.NewRow();
+                dr["Line"] = d.Key;
+                dr["Occurrence"] = d.Value;
+                dr["Length"] = d.Key.Length;
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+        private void btnFilterEditor_Click(object sender, EventArgs e)
+        {
+            if (gcRepetitive.DataSource != null && ((DataTable)gcRepetitive.DataSource).Rows.Count > 0)
+                gvRepetitive.ShowFilterEditor(gvRepetitive.Columns[1]);
+            else
+                MessageBox.Show("There is no file in the list");
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            fastColoredTextBox1.ShowFindDialog();
+        }
+    }
+}

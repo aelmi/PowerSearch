@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FileSearcher
+{
+    public static class FileHelper
+    {
+        public static string[] getFilesInFolder(string Foldername, bool IncludeSubfolder = false)
+        {
+            if (IncludeSubfolder)
+                return Directory.GetFiles(Foldername, "*", SearchOption.AllDirectories);
+            else
+                return Directory.GetFiles(Foldername);
+        }
+
+
+    }
+}

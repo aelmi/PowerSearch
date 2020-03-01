@@ -1,0 +1,168 @@
+﻿using Ookii.Dialogs;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace FileSearcher
+{
+    public partial class frmMain : Form
+    {
+        public DataTable dtFiles;
+        public frmMain()
+        {
+            InitializeComponent();
+
+            dtFiles = new DataTable();
+            dtFiles.TableName = "Files";
+            dtFiles.Columns.Add("Filename", typeof(string));
+            dtFiles.Columns.Add("Extension", typeof(string));
+            dtFiles.Columns.Add("Content", typeof(string));
+        }
+
+        public DataTable getFiles(string[] files)
+        {
+            for (int i = 0; i < files.Length; i++)
+            {
+                var file = files[i];
+
+                string ext = Path.GetExtension(file);
+
+                if (lbFileExtension.Items.Count == 0)
+                {
+                    DataRow dr = dtFiles.NewRow();
+                    dr["Filename"] = file;
+                    dr["Extension"] = Path.GetExtension(file);
+                    dtFiles.Rows.Add(dr);
+                }
+                else
+                {
+                    for (int j = 0; j < lbFileExtension.Items.Count; j++)
+                    {
+                        if ((lbFileExtension.Items[j].ToString().ToUpper() == ext.Replace(".", "").ToUpper()))
+                        {
+                            DataRow dr = dtFiles.NewRow();
+                            dr["Filename"] = file;
+                            dr["Extension"] = Path.GetExtension(file);
+                            dtFiles.Rows.Add(dr);
+                        }
+                    }
+                }
+            }
+            return dtFiles;
+        }
+
+        private void btnAddExtension_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < lbFileExtension.Items.Count; i++)
+                {
+                    if (lbFileExtension.Items[i].ToString() == txtExtension.Text)
+                    {
+                        DialogResult result = MessageBox.Show(this, "This extension has been already added" + Environment.NewLine + "Would you like to select it?",
+                            "Duplicate extension", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                            lbFileExtension.SetSelected(i, true);
+                        return;
+                    }
+                }
+                lbFileExtension.Items.Add(txtExtension.Text);
+            }
+            finally
+            {
+                txtExtension.Clear();
+            }
+        }
+
+        private void btnExtensionClear_Click(object sender, EventArgs e)
+        {
+            lbFileExtension.Items.Clear();
+        }
+
+        private void btnDelExtension_Click(object sender, EventArgs e)
+        {
+            if (lbFileExtension.SelectedItem != null)
+                lbFileExtension.Items.Remove(lbFileExtension.Items[lbFileExtension.SelectedIndex]);
+        }
+
+        private void btnFolderClear_Click(object sender, EventArgs e)
+        {
+            lbFolder.Items.Clear();
+        }
+
+        private void btnDelFolder_Click(object sender, EventArgs e)
+        {
+            if (lbFolder.SelectedItem != null)
+                lbFolder.Items.Remove(lbFolder.Items[lbFolder.SelectedIndex]);
+        }
+
+        private void btnAddFolder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!System.IO.Directory.Exists(txtFolder.Text))
+                {
+                    MessageBox.Show("The path does not exist or invalid.");
+                    return;
+                }
+
+                for (int i = 0; i < lbFolder.Items.Count; i++)
+                {
+                    if (lbFolder.Items[i].ToString() == txtFolder.Text)
+                    {
+                        DialogResult result = MessageBox.Show(this, "This extension has been already added" + Environment.NewLine + "Would you like to select it?",
+                            "Duplicate extension", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                            lbFolder.SetSelected(i, true);
+                        return;
+                    }
+                }
+                lbFolder.Items.Add(txtFolder.Text); // Path.GetDirectoryName()
+            }
+            finally
+            {
+                txtFolder.Clear();
+            }
+
+        }
+
+        private void btnSelectFolder_Click(object sender, EventArgs e)
+        {
+            // 
+            VistaFolderBrowserDialog _sampleVistaFolderBrowserDialog = new VistaFolderBrowserDialog();
+            if (!VistaFolderBrowserDialog.IsVistaFolderDialogSupported)
+                MessageBox.Show(this, "Because you are not using Windows Vista or later, the regular folder browser dialog will be used. Please use Windows Vista to see the new dialog.", "Sample folder browser dialog");
+            if (_sampleVistaFolderBrowserDialog.ShowDialog(this) == DialogResult.OK)
+                txtFolder.Text = _sampleVistaFolderBrowserDialog.SelectedPath;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+            dtFiles.Clear();
+            for (int i = 0; i < lbFolder.Items.Count; i++)
+            {
+                var files = Directory.GetFiles(lbFolder.Items[i].ToString());
+                getFiles(files);
+            }
+            gcFiles.DataSource = dtFiles;
+        }
+
+        private void btnLoadFileContent_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dtFiles.Rows.Count; i++)
+            {
+                var fc = File.ReadAllText(dtFiles.Rows[i]["Filename"].ToString());
+                dtFiles.Rows[i]["Content"] = fc;
+
+            }
+        }
+    }
+}
