@@ -9,19 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace PowerSearch
 {
     public partial class frmMain : Form
     {
+        AppFilter appFilter;
+
         private int ActiveThread = 0;
         public DataTable dtFiles;
         bool includeSubfolder = false;
- 
+
         public frmMain()
         {
             InitializeComponent();
-            
+
             dtFiles = new DataTable();
             dtFiles.TableName = "Files";
             dtFiles.Columns.Add("Filename", typeof(string));
@@ -170,7 +174,7 @@ namespace PowerSearch
         }
 
         // This event handler is where the time-consuming work is done.
-        
+
 
         private void getFileAndFolders(string Foldername)
         {
@@ -361,6 +365,47 @@ namespace PowerSearch
             this.WindowState = FormWindowState.Maximized;
         }
 
+        private void LoadFilters()
+        {
+            string filterFolder = Application.StartupPath + @"\Filter";
+            if (!Directory.Exists(filterFolder))
+                System.IO.Directory.CreateDirectory(filterFolder);
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = filterFolder;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                var serializer = new XmlSerializer(typeof(AppFilter));
+                using (var reader = XmlReader.Create(dlg.FileName))
+                {
+                    appFilter = (AppFilter)serializer.Deserialize(reader);
+                }
+
+                lbFileExtension.Items.Clear();
+                lbFileExcludeExtension.Items.Clear();
+                lbFolder.Items.Clear();
+                lbExcludeFolder.Items.Clear();
+
+                for (int i = 0; i < appFilter.FileExtension.Count; i++)
+                    lbFileExtension.Items.Add(appFilter.FileExtension[i]);
+
+                for (int i = 0; i < appFilter.ExcludeExtension.Count; i++)
+                    lbFileExcludeExtension.Items.Add(appFilter.ExcludeExtension[i]);
+
+                for (int i = 0; i < appFilter.Folder.Count; i++)
+                    lbFolder.Items.Add(appFilter.Folder[i]);
+
+                if (appFilter.IncludeSubfolder)
+                    cbIncludeSubfolder.Checked = true;
+                else
+                    cbIncludeSubfolder.Checked = false;
+
+                for (int i = 0; i < appFilter.ExcludeSubfolder.Count; i++)
+                    lbExcludeFolder.Items.Add(appFilter.ExcludeSubfolder[i]);
+            }
+        }
+
         private void btnFilterEditor_Click(object sender, EventArgs e)
         {
             if (gcFiles.DataSource != null && (((DataTable)gcFiles.DataSource).Rows.Count > 0))
@@ -441,5 +486,49 @@ namespace PowerSearch
             gvFiles.ShowPrintPreview();
         }
 
+        private void btnSaveFilter_Click(object sender, EventArgs e)
+        {
+            appFilter = new AppFilter();
+
+            for (int i = 0; i < lbFileExtension.Items.Count; i++)
+                appFilter.FileExtension.Add(lbFileExtension.Items[i].ToString());
+
+            for (int i = 0; i < lbFileExcludeExtension.Items.Count; i++)
+                appFilter.ExcludeExtension.Add(lbFileExcludeExtension.Items[i].ToString());
+
+            for (int i = 0; i < lbFolder.Items.Count; i++)
+                appFilter.Folder.Add(lbFolder.Items[i].ToString());
+
+            if (cbIncludeSubfolder.Checked)
+                appFilter.IncludeSubfolder = true;
+
+            for (int i = 0; i < lbExcludeFolder.Items.Count; i++)
+                appFilter.ExcludeSubfolder.Add(lbExcludeFolder.Items[i].ToString());
+
+
+            string filterFolder = Application.StartupPath + @"\Filter";
+            if (!Directory.Exists(filterFolder))
+                System.IO.Directory.CreateDirectory(filterFolder);
+
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = "filter";
+            dlg.InitialDirectory = filterFolder;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                var serializer = new XmlSerializer(appFilter.GetType());
+                using (var writer = XmlWriter.Create(dlg.FileName))
+                {
+                    serializer.Serialize(writer, appFilter);
+                }
+            }
+
+
+        }
+
+        private void btnLoadFilter_Click(object sender, EventArgs e)
+        {
+            LoadFilters();
+        }
     }
 }

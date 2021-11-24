@@ -38,7 +38,9 @@
             this.gcFiles = new DevExpress.XtraGrid.GridControl();
             this.gvFiles = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.pnlSearch = new System.Windows.Forms.Panel();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnLoadFilter = new System.Windows.Forms.Button();
+            this.btnSaveFilter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnReport = new System.Windows.Forms.Button();
             this.btnFilterEditor = new System.Windows.Forms.Button();
@@ -97,7 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvFiles)).BeginInit();
             this.pnlSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            this.panel3.SuspendLayout();
             this.pnlFolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -133,10 +135,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabFile);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(138, 0);
+            this.tabControl1.Location = new System.Drawing.Point(104, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1201, 756);
+            this.tabControl1.Size = new System.Drawing.Size(999, 642);
             this.tabControl1.TabIndex = 2;
             // 
             // tabFile
@@ -145,10 +148,11 @@
             this.tabFile.Controls.Add(this.pnlSearch);
             this.tabFile.Controls.Add(this.pnlFolder);
             this.tabFile.Controls.Add(this.pnlExtension);
-            this.tabFile.Location = new System.Drawing.Point(4, 25);
+            this.tabFile.Location = new System.Drawing.Point(4, 22);
+            this.tabFile.Margin = new System.Windows.Forms.Padding(2);
             this.tabFile.Name = "tabFile";
-            this.tabFile.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFile.Size = new System.Drawing.Size(1193, 727);
+            this.tabFile.Padding = new System.Windows.Forms.Padding(2);
+            this.tabFile.Size = new System.Drawing.Size(991, 616);
             this.tabFile.TabIndex = 0;
             this.tabFile.Text = "Search File";
             this.tabFile.UseVisualStyleBackColor = true;
@@ -157,25 +161,20 @@
             // 
             this.pnlFiles.Controls.Add(this.gcFiles);
             this.pnlFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFiles.Location = new System.Drawing.Point(712, 140);
+            this.pnlFiles.Location = new System.Drawing.Point(533, 113);
+            this.pnlFiles.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFiles.Name = "pnlFiles";
-            this.pnlFiles.Size = new System.Drawing.Size(478, 584);
+            this.pnlFiles.Size = new System.Drawing.Size(456, 501);
             this.pnlFiles.TabIndex = 7;
             // 
             // gcFiles
             // 
             this.gcFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcFiles.EmbeddedNavigator.Buttons.Append.Visible = false;
-            this.gcFiles.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.gcFiles.EmbeddedNavigator.Buttons.Edit.Visible = false;
-            this.gcFiles.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.gcFiles.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.gcFiles.Location = new System.Drawing.Point(0, 0);
             this.gcFiles.MainView = this.gvFiles;
             this.gcFiles.Name = "gcFiles";
-            this.gcFiles.Size = new System.Drawing.Size(478, 584);
-            this.gcFiles.TabIndex = 3;
-            this.gcFiles.UseEmbeddedNavigator = true;
+            this.gcFiles.Size = new System.Drawing.Size(456, 501);
+            this.gcFiles.TabIndex = 0;
             this.gcFiles.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvFiles});
             // 
@@ -186,44 +185,65 @@
             // 
             // pnlSearch
             // 
-            this.pnlSearch.Controls.Add(this.comboBoxEdit1);
-            this.pnlSearch.Controls.Add(this.label1);
+            this.pnlSearch.Controls.Add(this.panel3);
             this.pnlSearch.Controls.Add(this.btnReport);
             this.pnlSearch.Controls.Add(this.btnFilterEditor);
             this.pnlSearch.Controls.Add(this.btnLoadFileContent);
             this.pnlSearch.Controls.Add(this.btnSearch);
             this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSearch.Location = new System.Drawing.Point(712, 3);
+            this.pnlSearch.Location = new System.Drawing.Point(533, 2);
+            this.pnlSearch.Margin = new System.Windows.Forms.Padding(2);
             this.pnlSearch.Name = "pnlSearch";
-            this.pnlSearch.Size = new System.Drawing.Size(478, 137);
+            this.pnlSearch.Size = new System.Drawing.Size(456, 111);
             this.pnlSearch.TabIndex = 6;
             // 
-            // comboBoxEdit1
+            // panel3
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(51, 88);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(382, 22);
-            this.comboBoxEdit1.TabIndex = 2;
-            this.comboBoxEdit1.Visible = false;
+            this.panel3.Controls.Add(this.btnLoadFilter);
+            this.panel3.Controls.Add(this.btnSaveFilter);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Location = new System.Drawing.Point(8, 61);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(433, 44);
+            this.panel3.TabIndex = 3;
+            // 
+            // btnLoadFilter
+            // 
+            this.btnLoadFilter.Image = global::PowerSearch.Properties.Resources.Load;
+            this.btnLoadFilter.Location = new System.Drawing.Point(80, -1);
+            this.btnLoadFilter.Name = "btnLoadFilter";
+            this.btnLoadFilter.Size = new System.Drawing.Size(38, 39);
+            this.btnLoadFilter.TabIndex = 3;
+            this.btnLoadFilter.UseVisualStyleBackColor = true;
+            this.btnLoadFilter.Click += new System.EventHandler(this.btnLoadFilter_Click);
+            // 
+            // btnSaveFilter
+            // 
+            this.btnSaveFilter.Image = global::PowerSearch.Properties.Resources.save;
+            this.btnSaveFilter.Location = new System.Drawing.Point(36, 0);
+            this.btnSaveFilter.Name = "btnSaveFilter";
+            this.btnSaveFilter.Size = new System.Drawing.Size(38, 39);
+            this.btnSaveFilter.TabIndex = 3;
+            this.btnSaveFilter.UseVisualStyleBackColor = true;
+            this.btnSaveFilter.Click += new System.EventHandler(this.btnSaveFilter_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 91);
+            this.label1.Location = new System.Drawing.Point(2, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 17);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Filter";
-            this.label1.Visible = false;
             // 
             // btnReport
             // 
             this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnReport.Location = new System.Drawing.Point(353, 22);
+            this.btnReport.Location = new System.Drawing.Point(265, 18);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(2);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(107, 47);
+            this.btnReport.Size = new System.Drawing.Size(80, 38);
             this.btnReport.TabIndex = 0;
             this.btnReport.Text = "Report";
             this.btnReport.UseVisualStyleBackColor = true;
@@ -232,9 +252,10 @@
             // btnFilterEditor
             // 
             this.btnFilterEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnFilterEditor.Location = new System.Drawing.Point(239, 22);
+            this.btnFilterEditor.Location = new System.Drawing.Point(179, 18);
+            this.btnFilterEditor.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilterEditor.Name = "btnFilterEditor";
-            this.btnFilterEditor.Size = new System.Drawing.Size(107, 47);
+            this.btnFilterEditor.Size = new System.Drawing.Size(80, 38);
             this.btnFilterEditor.TabIndex = 0;
             this.btnFilterEditor.Text = "Filter Editor";
             this.btnFilterEditor.UseVisualStyleBackColor = true;
@@ -243,9 +264,10 @@
             // btnLoadFileContent
             // 
             this.btnLoadFileContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadFileContent.Location = new System.Drawing.Point(125, 22);
+            this.btnLoadFileContent.Location = new System.Drawing.Point(94, 18);
+            this.btnLoadFileContent.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoadFileContent.Name = "btnLoadFileContent";
-            this.btnLoadFileContent.Size = new System.Drawing.Size(107, 47);
+            this.btnLoadFileContent.Size = new System.Drawing.Size(80, 38);
             this.btnLoadFileContent.TabIndex = 0;
             this.btnLoadFileContent.Text = "Search && \r\nLoad Content";
             this.btnLoadFileContent.UseVisualStyleBackColor = true;
@@ -254,9 +276,10 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnSearch.Location = new System.Drawing.Point(11, 22);
+            this.btnSearch.Location = new System.Drawing.Point(8, 18);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(107, 47);
+            this.btnSearch.Size = new System.Drawing.Size(80, 38);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -268,9 +291,10 @@
             this.pnlFolder.Controls.Add(this.lbFolder);
             this.pnlFolder.Controls.Add(this.groupControl2);
             this.pnlFolder.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlFolder.Location = new System.Drawing.Point(202, 3);
+            this.pnlFolder.Location = new System.Drawing.Point(151, 2);
+            this.pnlFolder.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFolder.Name = "pnlFolder";
-            this.pnlFolder.Size = new System.Drawing.Size(510, 721);
+            this.pnlFolder.Size = new System.Drawing.Size(382, 612);
             this.pnlFolder.TabIndex = 3;
             // 
             // groupControl3
@@ -278,9 +302,10 @@
             this.groupControl3.Controls.Add(this.lbExcludeFolder);
             this.groupControl3.Controls.Add(this.pnlExcludeSubfolder);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl3.Location = new System.Drawing.Point(0, 484);
+            this.groupControl3.Location = new System.Drawing.Point(0, 419);
+            this.groupControl3.Margin = new System.Windows.Forms.Padding(2);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(510, 237);
+            this.groupControl3.Size = new System.Drawing.Size(382, 193);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "Exclude Subfolder";
             // 
@@ -289,10 +314,10 @@
             this.lbExcludeFolder.ContextMenuStrip = this.contextMenuExcludeFolder;
             this.lbExcludeFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbExcludeFolder.FormattingEnabled = true;
-            this.lbExcludeFolder.ItemHeight = 16;
-            this.lbExcludeFolder.Location = new System.Drawing.Point(2, 116);
+            this.lbExcludeFolder.Location = new System.Drawing.Point(2, 97);
+            this.lbExcludeFolder.Margin = new System.Windows.Forms.Padding(2);
             this.lbExcludeFolder.Name = "lbExcludeFolder";
-            this.lbExcludeFolder.Size = new System.Drawing.Size(506, 119);
+            this.lbExcludeFolder.Size = new System.Drawing.Size(378, 94);
             this.lbExcludeFolder.TabIndex = 0;
             // 
             // contextMenuExcludeFolder
@@ -301,12 +326,12 @@
             this.contextMenuExcludeFolder.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemExcludeFolder});
             this.contextMenuExcludeFolder.Name = "contextMenuFolder";
-            this.contextMenuExcludeFolder.Size = new System.Drawing.Size(113, 28);
+            this.contextMenuExcludeFolder.Size = new System.Drawing.Size(103, 26);
             // 
             // toolStripMenuItemExcludeFolder
             // 
             this.toolStripMenuItemExcludeFolder.Name = "toolStripMenuItemExcludeFolder";
-            this.toolStripMenuItemExcludeFolder.Size = new System.Drawing.Size(112, 24);
+            this.toolStripMenuItemExcludeFolder.Size = new System.Drawing.Size(102, 22);
             this.toolStripMenuItemExcludeFolder.Text = "Copy";
             this.toolStripMenuItemExcludeFolder.Click += new System.EventHandler(this.toolStripMenuItemExcludeFolder_Click);
             // 
@@ -318,24 +343,27 @@
             this.pnlExcludeSubfolder.Controls.Add(this.btnFolderExcludeClear);
             this.pnlExcludeSubfolder.Controls.Add(this.btnDelExcludeFolder);
             this.pnlExcludeSubfolder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlExcludeSubfolder.Location = new System.Drawing.Point(2, 25);
+            this.pnlExcludeSubfolder.Location = new System.Drawing.Point(2, 23);
+            this.pnlExcludeSubfolder.Margin = new System.Windows.Forms.Padding(2);
             this.pnlExcludeSubfolder.Name = "pnlExcludeSubfolder";
-            this.pnlExcludeSubfolder.Size = new System.Drawing.Size(506, 91);
+            this.pnlExcludeSubfolder.Size = new System.Drawing.Size(378, 74);
             this.pnlExcludeSubfolder.TabIndex = 1;
             // 
             // txtExcludeFolder
             // 
             this.txtExcludeFolder.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExcludeFolder.Location = new System.Drawing.Point(10, 11);
+            this.txtExcludeFolder.Location = new System.Drawing.Point(8, 9);
+            this.txtExcludeFolder.Margin = new System.Windows.Forms.Padding(2);
             this.txtExcludeFolder.Name = "txtExcludeFolder";
-            this.txtExcludeFolder.Size = new System.Drawing.Size(431, 28);
+            this.txtExcludeFolder.Size = new System.Drawing.Size(324, 24);
             this.txtExcludeFolder.TabIndex = 1;
             // 
             // btnSelectExcludeFolder
             // 
-            this.btnSelectExcludeFolder.Location = new System.Drawing.Point(447, 9);
+            this.btnSelectExcludeFolder.Location = new System.Drawing.Point(335, 7);
+            this.btnSelectExcludeFolder.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectExcludeFolder.Name = "btnSelectExcludeFolder";
-            this.btnSelectExcludeFolder.Size = new System.Drawing.Size(40, 31);
+            this.btnSelectExcludeFolder.Size = new System.Drawing.Size(30, 25);
             this.btnSelectExcludeFolder.TabIndex = 2;
             this.btnSelectExcludeFolder.Text = "...";
             this.btnSelectExcludeFolder.UseVisualStyleBackColor = true;
@@ -343,9 +371,10 @@
             // 
             // btnAddExcludeFolder
             // 
-            this.btnAddExcludeFolder.Location = new System.Drawing.Point(10, 46);
+            this.btnAddExcludeFolder.Location = new System.Drawing.Point(8, 37);
+            this.btnAddExcludeFolder.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddExcludeFolder.Name = "btnAddExcludeFolder";
-            this.btnAddExcludeFolder.Size = new System.Drawing.Size(39, 35);
+            this.btnAddExcludeFolder.Size = new System.Drawing.Size(29, 28);
             this.btnAddExcludeFolder.TabIndex = 0;
             this.btnAddExcludeFolder.Text = "+";
             this.btnAddExcludeFolder.UseVisualStyleBackColor = true;
@@ -353,9 +382,10 @@
             // 
             // btnFolderExcludeClear
             // 
-            this.btnFolderExcludeClear.Location = new System.Drawing.Point(343, 50);
+            this.btnFolderExcludeClear.Location = new System.Drawing.Point(257, 41);
+            this.btnFolderExcludeClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnFolderExcludeClear.Name = "btnFolderExcludeClear";
-            this.btnFolderExcludeClear.Size = new System.Drawing.Size(159, 35);
+            this.btnFolderExcludeClear.Size = new System.Drawing.Size(119, 28);
             this.btnFolderExcludeClear.TabIndex = 0;
             this.btnFolderExcludeClear.Text = "Clear";
             this.btnFolderExcludeClear.UseVisualStyleBackColor = true;
@@ -363,9 +393,10 @@
             // 
             // btnDelExcludeFolder
             // 
-            this.btnDelExcludeFolder.Location = new System.Drawing.Point(55, 46);
+            this.btnDelExcludeFolder.Location = new System.Drawing.Point(41, 37);
+            this.btnDelExcludeFolder.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelExcludeFolder.Name = "btnDelExcludeFolder";
-            this.btnDelExcludeFolder.Size = new System.Drawing.Size(39, 35);
+            this.btnDelExcludeFolder.Size = new System.Drawing.Size(29, 28);
             this.btnDelExcludeFolder.TabIndex = 0;
             this.btnDelExcludeFolder.Text = "-";
             this.btnDelExcludeFolder.UseVisualStyleBackColor = true;
@@ -376,10 +407,10 @@
             this.lbFolder.ContextMenuStrip = this.contextMenuFolder;
             this.lbFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbFolder.FormattingEnabled = true;
-            this.lbFolder.ItemHeight = 16;
-            this.lbFolder.Location = new System.Drawing.Point(0, 147);
+            this.lbFolder.Location = new System.Drawing.Point(0, 119);
+            this.lbFolder.Margin = new System.Windows.Forms.Padding(2);
             this.lbFolder.Name = "lbFolder";
-            this.lbFolder.Size = new System.Drawing.Size(510, 574);
+            this.lbFolder.Size = new System.Drawing.Size(382, 493);
             this.lbFolder.TabIndex = 1;
             // 
             // contextMenuFolder
@@ -388,12 +419,12 @@
             this.contextMenuFolder.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToolStripMenuItem});
             this.contextMenuFolder.Name = "contextMenuFolder";
-            this.contextMenuFolder.Size = new System.Drawing.Size(113, 28);
+            this.contextMenuFolder.Size = new System.Drawing.Size(103, 26);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -407,26 +438,29 @@
             this.groupControl2.Controls.Add(this.btnAddFolder);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
+            this.groupControl2.Margin = new System.Windows.Forms.Padding(2);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(510, 147);
+            this.groupControl2.Size = new System.Drawing.Size(382, 119);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Folder";
             // 
             // cbIncludeSubfolder
             // 
             this.cbIncludeSubfolder.AutoSize = true;
-            this.cbIncludeSubfolder.Location = new System.Drawing.Point(12, 116);
+            this.cbIncludeSubfolder.Location = new System.Drawing.Point(9, 94);
+            this.cbIncludeSubfolder.Margin = new System.Windows.Forms.Padding(2);
             this.cbIncludeSubfolder.Name = "cbIncludeSubfolder";
-            this.cbIncludeSubfolder.Size = new System.Drawing.Size(136, 21);
+            this.cbIncludeSubfolder.Size = new System.Drawing.Size(110, 17);
             this.cbIncludeSubfolder.TabIndex = 2;
             this.cbIncludeSubfolder.Text = "Include Subfolder";
             this.cbIncludeSubfolder.UseVisualStyleBackColor = true;
             // 
             // btnSelectFolder
             // 
-            this.btnSelectFolder.Location = new System.Drawing.Point(449, 39);
+            this.btnSelectFolder.Location = new System.Drawing.Point(337, 32);
+            this.btnSelectFolder.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectFolder.Name = "btnSelectFolder";
-            this.btnSelectFolder.Size = new System.Drawing.Size(40, 31);
+            this.btnSelectFolder.Size = new System.Drawing.Size(30, 25);
             this.btnSelectFolder.TabIndex = 2;
             this.btnSelectFolder.Text = "...";
             this.btnSelectFolder.UseVisualStyleBackColor = true;
@@ -435,16 +469,18 @@
             // txtFolder
             // 
             this.txtFolder.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFolder.Location = new System.Drawing.Point(12, 41);
+            this.txtFolder.Location = new System.Drawing.Point(9, 33);
+            this.txtFolder.Margin = new System.Windows.Forms.Padding(2);
             this.txtFolder.Name = "txtFolder";
-            this.txtFolder.Size = new System.Drawing.Size(431, 28);
+            this.txtFolder.Size = new System.Drawing.Size(324, 24);
             this.txtFolder.TabIndex = 1;
             // 
             // btnFolderClear
             // 
-            this.btnFolderClear.Location = new System.Drawing.Point(345, 102);
+            this.btnFolderClear.Location = new System.Drawing.Point(259, 83);
+            this.btnFolderClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnFolderClear.Name = "btnFolderClear";
-            this.btnFolderClear.Size = new System.Drawing.Size(159, 35);
+            this.btnFolderClear.Size = new System.Drawing.Size(119, 28);
             this.btnFolderClear.TabIndex = 0;
             this.btnFolderClear.Text = "Clear";
             this.btnFolderClear.UseVisualStyleBackColor = true;
@@ -452,9 +488,10 @@
             // 
             // btnDelFolder
             // 
-            this.btnDelFolder.Location = new System.Drawing.Point(57, 75);
+            this.btnDelFolder.Location = new System.Drawing.Point(43, 61);
+            this.btnDelFolder.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelFolder.Name = "btnDelFolder";
-            this.btnDelFolder.Size = new System.Drawing.Size(39, 35);
+            this.btnDelFolder.Size = new System.Drawing.Size(29, 28);
             this.btnDelFolder.TabIndex = 0;
             this.btnDelFolder.Text = "-";
             this.btnDelFolder.UseVisualStyleBackColor = true;
@@ -462,9 +499,10 @@
             // 
             // btnAddFolder
             // 
-            this.btnAddFolder.Location = new System.Drawing.Point(12, 75);
+            this.btnAddFolder.Location = new System.Drawing.Point(9, 61);
+            this.btnAddFolder.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddFolder.Name = "btnAddFolder";
-            this.btnAddFolder.Size = new System.Drawing.Size(39, 35);
+            this.btnAddFolder.Size = new System.Drawing.Size(29, 28);
             this.btnAddFolder.TabIndex = 0;
             this.btnAddFolder.Text = "+";
             this.btnAddFolder.UseVisualStyleBackColor = true;
@@ -476,9 +514,10 @@
             this.pnlExtension.Controls.Add(this.lbFileExtension);
             this.pnlExtension.Controls.Add(this.groupControl1);
             this.pnlExtension.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlExtension.Location = new System.Drawing.Point(3, 3);
+            this.pnlExtension.Location = new System.Drawing.Point(2, 2);
+            this.pnlExtension.Margin = new System.Windows.Forms.Padding(2);
             this.pnlExtension.Name = "pnlExtension";
-            this.pnlExtension.Size = new System.Drawing.Size(199, 721);
+            this.pnlExtension.Size = new System.Drawing.Size(149, 612);
             this.pnlExtension.TabIndex = 2;
             // 
             // groupControl4
@@ -486,9 +525,10 @@
             this.groupControl4.Controls.Add(this.lbFileExcludeExtension);
             this.groupControl4.Controls.Add(this.panel2);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl4.Location = new System.Drawing.Point(0, 484);
+            this.groupControl4.Location = new System.Drawing.Point(0, 419);
+            this.groupControl4.Margin = new System.Windows.Forms.Padding(2);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(199, 237);
+            this.groupControl4.Size = new System.Drawing.Size(149, 193);
             this.groupControl4.TabIndex = 3;
             this.groupControl4.Text = "Exclude Extension";
             // 
@@ -497,10 +537,10 @@
             this.lbFileExcludeExtension.ContextMenuStrip = this.contextMenuFileExcludeExtension;
             this.lbFileExcludeExtension.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbFileExcludeExtension.FormattingEnabled = true;
-            this.lbFileExcludeExtension.ItemHeight = 16;
-            this.lbFileExcludeExtension.Location = new System.Drawing.Point(2, 116);
+            this.lbFileExcludeExtension.Location = new System.Drawing.Point(2, 97);
+            this.lbFileExcludeExtension.Margin = new System.Windows.Forms.Padding(2);
             this.lbFileExcludeExtension.Name = "lbFileExcludeExtension";
-            this.lbFileExcludeExtension.Size = new System.Drawing.Size(195, 119);
+            this.lbFileExcludeExtension.Size = new System.Drawing.Size(145, 94);
             this.lbFileExcludeExtension.TabIndex = 0;
             // 
             // contextMenuFileExcludeExtension
@@ -509,12 +549,12 @@
             this.contextMenuFileExcludeExtension.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemFileExcludeExtension});
             this.contextMenuFileExcludeExtension.Name = "contextMenuFolder";
-            this.contextMenuFileExcludeExtension.Size = new System.Drawing.Size(113, 28);
+            this.contextMenuFileExcludeExtension.Size = new System.Drawing.Size(103, 26);
             // 
             // toolStripMenuItemFileExcludeExtension
             // 
             this.toolStripMenuItemFileExcludeExtension.Name = "toolStripMenuItemFileExcludeExtension";
-            this.toolStripMenuItemFileExcludeExtension.Size = new System.Drawing.Size(112, 24);
+            this.toolStripMenuItemFileExcludeExtension.Size = new System.Drawing.Size(102, 22);
             this.toolStripMenuItemFileExcludeExtension.Text = "Copy";
             this.toolStripMenuItemFileExcludeExtension.Click += new System.EventHandler(this.toolStripMenuItemFileExcludeExtension_Click);
             // 
@@ -527,24 +567,27 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.btnDelExcludeExtension);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 25);
+            this.panel2.Location = new System.Drawing.Point(2, 23);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(195, 91);
+            this.panel2.Size = new System.Drawing.Size(145, 74);
             this.panel2.TabIndex = 1;
             // 
             // txtExcludeExtension
             // 
             this.txtExcludeExtension.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExcludeExtension.Location = new System.Drawing.Point(10, 11);
+            this.txtExcludeExtension.Location = new System.Drawing.Point(8, 9);
+            this.txtExcludeExtension.Margin = new System.Windows.Forms.Padding(2);
             this.txtExcludeExtension.Name = "txtExcludeExtension";
-            this.txtExcludeExtension.Size = new System.Drawing.Size(69, 28);
+            this.txtExcludeExtension.Size = new System.Drawing.Size(53, 24);
             this.txtExcludeExtension.TabIndex = 1;
             // 
             // btnExcludeExtensionClear
             // 
-            this.btnExcludeExtensionClear.Location = new System.Drawing.Point(10, 50);
+            this.btnExcludeExtensionClear.Location = new System.Drawing.Point(8, 41);
+            this.btnExcludeExtensionClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnExcludeExtensionClear.Name = "btnExcludeExtensionClear";
-            this.btnExcludeExtensionClear.Size = new System.Drawing.Size(159, 35);
+            this.btnExcludeExtensionClear.Size = new System.Drawing.Size(119, 28);
             this.btnExcludeExtensionClear.TabIndex = 0;
             this.btnExcludeExtensionClear.Text = "Clear";
             this.btnExcludeExtensionClear.UseVisualStyleBackColor = true;
@@ -552,18 +595,20 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(447, 9);
+            this.button1.Location = new System.Drawing.Point(335, 7);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 31);
+            this.button1.Size = new System.Drawing.Size(30, 25);
             this.button1.TabIndex = 2;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // btnAddExcludeExtension
             // 
-            this.btnAddExcludeExtension.Location = new System.Drawing.Point(85, 11);
+            this.btnAddExcludeExtension.Location = new System.Drawing.Point(64, 9);
+            this.btnAddExcludeExtension.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddExcludeExtension.Name = "btnAddExcludeExtension";
-            this.btnAddExcludeExtension.Size = new System.Drawing.Size(39, 35);
+            this.btnAddExcludeExtension.Size = new System.Drawing.Size(29, 28);
             this.btnAddExcludeExtension.TabIndex = 0;
             this.btnAddExcludeExtension.Text = "+";
             this.btnAddExcludeExtension.UseVisualStyleBackColor = true;
@@ -571,18 +616,20 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(343, 50);
+            this.button3.Location = new System.Drawing.Point(257, 41);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 35);
+            this.button3.Size = new System.Drawing.Size(119, 28);
             this.button3.TabIndex = 0;
             this.button3.Text = "Clear";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // btnDelExcludeExtension
             // 
-            this.btnDelExcludeExtension.Location = new System.Drawing.Point(130, 11);
+            this.btnDelExcludeExtension.Location = new System.Drawing.Point(98, 9);
+            this.btnDelExcludeExtension.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelExcludeExtension.Name = "btnDelExcludeExtension";
-            this.btnDelExcludeExtension.Size = new System.Drawing.Size(39, 35);
+            this.btnDelExcludeExtension.Size = new System.Drawing.Size(29, 28);
             this.btnDelExcludeExtension.TabIndex = 0;
             this.btnDelExcludeExtension.Text = "-";
             this.btnDelExcludeExtension.UseVisualStyleBackColor = true;
@@ -593,10 +640,10 @@
             this.lbFileExtension.ContextMenuStrip = this.contextMenuFileExtension;
             this.lbFileExtension.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbFileExtension.FormattingEnabled = true;
-            this.lbFileExtension.ItemHeight = 16;
-            this.lbFileExtension.Location = new System.Drawing.Point(0, 125);
+            this.lbFileExtension.Location = new System.Drawing.Point(0, 102);
+            this.lbFileExtension.Margin = new System.Windows.Forms.Padding(2);
             this.lbFileExtension.Name = "lbFileExtension";
-            this.lbFileExtension.Size = new System.Drawing.Size(199, 596);
+            this.lbFileExtension.Size = new System.Drawing.Size(149, 510);
             this.lbFileExtension.TabIndex = 1;
             // 
             // contextMenuFileExtension
@@ -605,12 +652,12 @@
             this.contextMenuFileExtension.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.contextMenuFileExtension.Name = "contextMenuFolder";
-            this.contextMenuFileExtension.Size = new System.Drawing.Size(113, 28);
+            this.contextMenuFileExtension.Size = new System.Drawing.Size(103, 26);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(112, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(102, 22);
             this.toolStripMenuItem1.Text = "Copy";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -622,24 +669,27 @@
             this.groupControl1.Controls.Add(this.btnAddExtension);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(2);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(199, 125);
+            this.groupControl1.Size = new System.Drawing.Size(149, 102);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "File Extension";
             // 
             // txtExtension
             // 
             this.txtExtension.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExtension.Location = new System.Drawing.Point(12, 41);
+            this.txtExtension.Location = new System.Drawing.Point(9, 33);
+            this.txtExtension.Margin = new System.Windows.Forms.Padding(2);
             this.txtExtension.Name = "txtExtension";
-            this.txtExtension.Size = new System.Drawing.Size(69, 28);
+            this.txtExtension.Size = new System.Drawing.Size(53, 24);
             this.txtExtension.TabIndex = 1;
             // 
             // btnExtensionClear
             // 
-            this.btnExtensionClear.Location = new System.Drawing.Point(12, 75);
+            this.btnExtensionClear.Location = new System.Drawing.Point(9, 61);
+            this.btnExtensionClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnExtensionClear.Name = "btnExtensionClear";
-            this.btnExtensionClear.Size = new System.Drawing.Size(159, 35);
+            this.btnExtensionClear.Size = new System.Drawing.Size(119, 28);
             this.btnExtensionClear.TabIndex = 0;
             this.btnExtensionClear.Text = "Clear";
             this.btnExtensionClear.UseVisualStyleBackColor = true;
@@ -647,9 +697,10 @@
             // 
             // btnDelExtension
             // 
-            this.btnDelExtension.Location = new System.Drawing.Point(132, 39);
+            this.btnDelExtension.Location = new System.Drawing.Point(99, 32);
+            this.btnDelExtension.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelExtension.Name = "btnDelExtension";
-            this.btnDelExtension.Size = new System.Drawing.Size(39, 35);
+            this.btnDelExtension.Size = new System.Drawing.Size(29, 28);
             this.btnDelExtension.TabIndex = 0;
             this.btnDelExtension.Text = "-";
             this.btnDelExtension.UseVisualStyleBackColor = true;
@@ -657,9 +708,10 @@
             // 
             // btnAddExtension
             // 
-            this.btnAddExtension.Location = new System.Drawing.Point(87, 39);
+            this.btnAddExtension.Location = new System.Drawing.Point(65, 32);
+            this.btnAddExtension.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddExtension.Name = "btnAddExtension";
-            this.btnAddExtension.Size = new System.Drawing.Size(39, 35);
+            this.btnAddExtension.Size = new System.Drawing.Size(29, 28);
             this.btnAddExtension.TabIndex = 0;
             this.btnAddExtension.Text = "+";
             this.btnAddExtension.UseVisualStyleBackColor = true;
@@ -670,15 +722,17 @@
             this.panel1.Controls.Add(this.btnRepetitive);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(138, 756);
+            this.panel1.Size = new System.Drawing.Size(104, 642);
             this.panel1.TabIndex = 3;
             // 
             // btnRepetitive
             // 
-            this.btnRepetitive.Location = new System.Drawing.Point(12, 25);
+            this.btnRepetitive.Location = new System.Drawing.Point(9, 20);
+            this.btnRepetitive.Margin = new System.Windows.Forms.Padding(2);
             this.btnRepetitive.Name = "btnRepetitive";
-            this.btnRepetitive.Size = new System.Drawing.Size(112, 57);
+            this.btnRepetitive.Size = new System.Drawing.Size(84, 46);
             this.btnRepetitive.TabIndex = 0;
             this.btnRepetitive.Text = "Find Repetitive";
             this.btnRepetitive.UseVisualStyleBackColor = true;
@@ -692,11 +746,12 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1339, 756);
+            this.ClientSize = new System.Drawing.Size(1103, 642);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Power Search";
@@ -710,8 +765,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvFiles)).EndInit();
             this.pnlSearch.ResumeLayout(false);
-            this.pnlSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.pnlFolder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
@@ -745,8 +800,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabFile;
         private System.Windows.Forms.Panel pnlFiles;
-        private DevExpress.XtraGrid.GridControl gcFiles;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvFiles;
         private System.Windows.Forms.Panel pnlSearch;
         private System.Windows.Forms.Button btnLoadFileContent;
         private System.Windows.Forms.Button btnSearch;
@@ -794,10 +847,14 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExcludeFolder;
         private System.Windows.Forms.ContextMenuStrip contextMenuFileExcludeExtension;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFileExcludeExtension;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnReport;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevExpress.XtraGrid.GridControl gcFiles;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvFiles;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnSaveFilter;
+        private System.Windows.Forms.Button btnLoadFilter;
     }
 }
 
