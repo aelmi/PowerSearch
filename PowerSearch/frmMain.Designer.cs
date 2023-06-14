@@ -87,6 +87,10 @@
             this.btnExtensionClear = new System.Windows.Forms.Button();
             this.btnDelExtension = new System.Windows.Forms.Button();
             this.btnAddExtension = new System.Windows.Forms.Button();
+            this.txtStatus = new System.Windows.Forms.RichTextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRepetitive = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -102,20 +106,17 @@
             this.panel3.SuspendLayout();
             this.pnlFolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
-            this.groupControl3.SuspendLayout();
             this.contextMenuExcludeFolder.SuspendLayout();
             this.pnlExcludeSubfolder.SuspendLayout();
             this.contextMenuFolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
             this.pnlExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
-            this.groupControl4.SuspendLayout();
             this.contextMenuFileExcludeExtension.SuspendLayout();
             this.panel2.SuspendLayout();
             this.contextMenuFileExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,6 +149,8 @@
             this.tabFile.Controls.Add(this.pnlSearch);
             this.tabFile.Controls.Add(this.pnlFolder);
             this.tabFile.Controls.Add(this.pnlExtension);
+            this.tabFile.Controls.Add(this.txtStatus);
+            this.tabFile.Controls.Add(this.statusStrip1);
             this.tabFile.Location = new System.Drawing.Point(4, 22);
             this.tabFile.Margin = new System.Windows.Forms.Padding(2);
             this.tabFile.Name = "tabFile";
@@ -164,7 +167,7 @@
             this.pnlFiles.Location = new System.Drawing.Point(533, 113);
             this.pnlFiles.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFiles.Name = "pnlFiles";
-            this.pnlFiles.Size = new System.Drawing.Size(456, 501);
+            this.pnlFiles.Size = new System.Drawing.Size(456, 383);
             this.pnlFiles.TabIndex = 7;
             // 
             // gcFiles
@@ -173,7 +176,7 @@
             this.gcFiles.Location = new System.Drawing.Point(0, 0);
             this.gcFiles.MainView = this.gvFiles;
             this.gcFiles.Name = "gcFiles";
-            this.gcFiles.Size = new System.Drawing.Size(456, 501);
+            this.gcFiles.Size = new System.Drawing.Size(456, 383);
             this.gcFiles.TabIndex = 0;
             this.gcFiles.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvFiles});
@@ -294,7 +297,7 @@
             this.pnlFolder.Location = new System.Drawing.Point(151, 2);
             this.pnlFolder.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFolder.Name = "pnlFolder";
-            this.pnlFolder.Size = new System.Drawing.Size(382, 612);
+            this.pnlFolder.Size = new System.Drawing.Size(382, 494);
             this.pnlFolder.TabIndex = 3;
             // 
             // groupControl3
@@ -302,7 +305,7 @@
             this.groupControl3.Controls.Add(this.lbExcludeFolder);
             this.groupControl3.Controls.Add(this.pnlExcludeSubfolder);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl3.Location = new System.Drawing.Point(0, 419);
+            this.groupControl3.Location = new System.Drawing.Point(0, 301);
             this.groupControl3.Margin = new System.Windows.Forms.Padding(2);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(382, 193);
@@ -410,7 +413,7 @@
             this.lbFolder.Location = new System.Drawing.Point(0, 119);
             this.lbFolder.Margin = new System.Windows.Forms.Padding(2);
             this.lbFolder.Name = "lbFolder";
-            this.lbFolder.Size = new System.Drawing.Size(382, 493);
+            this.lbFolder.Size = new System.Drawing.Size(382, 375);
             this.lbFolder.TabIndex = 1;
             // 
             // contextMenuFolder
@@ -517,7 +520,7 @@
             this.pnlExtension.Location = new System.Drawing.Point(2, 2);
             this.pnlExtension.Margin = new System.Windows.Forms.Padding(2);
             this.pnlExtension.Name = "pnlExtension";
-            this.pnlExtension.Size = new System.Drawing.Size(149, 612);
+            this.pnlExtension.Size = new System.Drawing.Size(149, 494);
             this.pnlExtension.TabIndex = 2;
             // 
             // groupControl4
@@ -525,7 +528,7 @@
             this.groupControl4.Controls.Add(this.lbFileExcludeExtension);
             this.groupControl4.Controls.Add(this.panel2);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl4.Location = new System.Drawing.Point(0, 419);
+            this.groupControl4.Location = new System.Drawing.Point(0, 301);
             this.groupControl4.Margin = new System.Windows.Forms.Padding(2);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(149, 193);
@@ -643,7 +646,7 @@
             this.lbFileExtension.Location = new System.Drawing.Point(0, 102);
             this.lbFileExtension.Margin = new System.Windows.Forms.Padding(2);
             this.lbFileExtension.Name = "lbFileExtension";
-            this.lbFileExtension.Size = new System.Drawing.Size(149, 510);
+            this.lbFileExtension.Size = new System.Drawing.Size(149, 392);
             this.lbFileExtension.TabIndex = 1;
             // 
             // contextMenuFileExtension
@@ -717,6 +720,38 @@
             this.btnAddExtension.UseVisualStyleBackColor = true;
             this.btnAddExtension.Click += new System.EventHandler(this.btnAddExtension_Click);
             // 
+            // txtStatus
+            // 
+            this.txtStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtStatus.Location = new System.Drawing.Point(2, 496);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ReadOnly = true;
+            this.txtStatus.Size = new System.Drawing.Size(987, 96);
+            this.txtStatus.TabIndex = 8;
+            this.txtStatus.Text = "";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(2, 592);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(987, 22);
+            this.statusStrip1.TabIndex = 9;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnRepetitive);
@@ -761,6 +796,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabFile.ResumeLayout(false);
+            this.tabFile.PerformLayout();
             this.pnlFiles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvFiles)).EndInit();
@@ -769,24 +805,20 @@
             this.panel3.PerformLayout();
             this.pnlFolder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
-            this.groupControl3.ResumeLayout(false);
             this.contextMenuExcludeFolder.ResumeLayout(false);
             this.pnlExcludeSubfolder.ResumeLayout(false);
             this.pnlExcludeSubfolder.PerformLayout();
             this.contextMenuFolder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
             this.pnlExtension.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
-            this.groupControl4.ResumeLayout(false);
             this.contextMenuFileExcludeExtension.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.contextMenuFileExtension.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -855,6 +887,10 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnSaveFilter;
         private System.Windows.Forms.Button btnLoadFilter;
+        private System.Windows.Forms.RichTextBox txtStatus;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
     }
 }
 
