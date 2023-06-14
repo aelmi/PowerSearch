@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -138,43 +139,7 @@ namespace PowerSearch
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            //if (backgroundWorker1.IsBusy != true)
-            //{
-            //    // Start the asynchronous operation.
-            //    backgroundWorker1.RunWorkerAsync();
-            //}
-
-
-            //string[] allFiles[];
-            dtFiles.Clear();
-            if (cbIncludeSubfolder.CheckState == CheckState.Checked)
-                includeSubfolder = true;
-            else
-                includeSubfolder = false;
-
-            for (int i = 0; i < lbFolder.Items.Count; i++)
-            {
-                if (!isExcludeFolder(lbFolder.Items[i].ToString()))
-                {
-                    // var files = FileHelper.getFilesInFolder(lbFolder.Items[i].ToString(), includeSubfolder);
-                    var folders = FileHelper.getSubfolder(lbFolder.Items[i].ToString());
-                    for (int j = 0; j < folders.Length; j++)
-                        getFileAndFolders(folders[j]);
-
-                }
-                //gcFiles.DataSource = dtFiles;
-            }
-            gcFiles.DataSource = dtFiles;
-
-            //this.gvFiles.Columns["Extension"].Width = 60;
-            ActiveThread = 0;
-            this.gvFiles.OptionsView.ColumnAutoWidth = true;
-        }
-
-        // This event handler is where the time-consuming work is done.
-
+       
 
         private void getFileAndFolders(string Foldername)
         {
@@ -197,7 +162,8 @@ namespace PowerSearch
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage(Foldername, ex.Message);
             }
         }
         private void getFiles(string Foldername)
@@ -217,9 +183,27 @@ namespace PowerSearch
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage(Foldername, ex.Message);
             }
         }
+
+        private void ShowErrorMessage(string folderName, string errorMessage)
+        {
+            // Update the UI control using Invoke
+            Invoke((Action)(() =>
+            {
+                // Format the folder name in bold black
+                txtStatus.SelectionFont = new Font(txtStatus.Font, FontStyle.Bold);
+                txtStatus.SelectionColor = Color.Black;
+                txtStatus.AppendText(folderName + Environment.NewLine);
+
+                // Format the error message in red regular
+                txtStatus.SelectionFont = new Font(txtStatus.Font, FontStyle.Regular);
+                txtStatus.SelectionColor = Color.Red;
+                txtStatus.AppendText(errorMessage + Environment.NewLine);
+            }));
+        }
+
 
         private bool isExcludeFolder(string FolderName)
         {
@@ -231,23 +215,145 @@ namespace PowerSearch
             return false;
         }
 
-        private void btnLoadFileContent_Click(object sender, EventArgs e)
+
+        private string currentFileName;
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            btnSearch_Click(null, null);
-            for (int i = 0; i < dtFiles.Rows.Count; i++)
+            txtStatus.Clear();
+            Thread searchThread = new Thread(() =>
             {
                 try
                 {
-                    var fc = File.ReadAllText(dtFiles.Rows[i]["Filename"].ToString());
-                    dtFiles.Rows[i]["Content"] = fc;
+                    DataTable newDtFiles = new DataTable();
+
+                    if (cbIncludeSubfolder.CheckState == CheckState.Checked)
+                        includeSubfolder = true;
+                    else
+                        includeSubfolder = false;
+
+                    for (int i = 0; i < lbFolder.Items.Count; i++)
+                    {
+                        if (!isExcludeFolder(lbFolder.Items[i].ToString()))
+                        {
+                            var folders = FileHelper.getSubfolder(lbFolder.Items[i].ToString());
+                            for (int j = 0; j < folders.Length; j++)
+                            {
+                                getFileAndFolders(folders[j]);
+                            }
+                        }
+                    }
+
+                    Invoke((Action)(() =>
+                    {
+                        newDtFiles = dtFiles.Copy();
+                        gcFiles.DataSource = newDtFiles;
+                        this.gvFiles.OptionsView.ColumnAutoWidth = true;
+                    }));
+
+                    // Set the maximum value of the progress bar after processing all the files
+                    int totalFiles = newDtFiles.Rows.Count;
+                    Invoke((Action)(() =>
+                    {
+                        toolStripProgressBar1.Maximum = totalFiles;
+                        toolStripProgressBar1.Value = totalFiles;
+                    }));
+                }
+                catch (Exception ex)
+                {
+                    string errorMessage = ex.Message;
+
+                    Invoke((Action)(() =>
+                    {
+                        // Format the error message in red regular
+                        txtStatus.SelectionFont = new Font(txtStatus.Font, FontStyle.Regular);
+                        txtStatus.SelectionColor = Color.Red;
+                        txtStatus.AppendText(errorMessage + Environment.NewLine);
+
+                        // Add a one-line space
+                        txtStatus.AppendText(Environment.NewLine);
+
+                        // Optionally, update the status label for error
+                        toolStripStatusLabel1.Text = "Error occurred during file search.";
+                    }));
+                }
+                finally
+                {
+                    Invoke((Action)(() =>
+                    {
+                        toolStripStatusLabel1.Text = "File search completed.";
+                        toolStripProgressBar1.Value = toolStripProgressBar1.Maximum; // Set the progress bar value to the maximum
+                    }));
+                }
+            });
+
+            Invoke((Action)(() =>
+            {
+                toolStripStatusLabel1.Text = "Processing files...";
+                toolStripProgressBar1.Value = 0;
+                toolStripProgressBar1.Maximum = 1;
+            }));
+
+            searchThread.Start();
+        }
+
+
+        private async void btnLoadFileContent_Click(object sender, EventArgs e)
+        {
+            txtStatus.Clear();
+            btnSearch_Click(null, null);
+            int totalFiles = dtFiles.Rows.Count;            
+            toolStripProgressBar1.Maximum = totalFiles;
+
+
+            for (int i = 0; i < totalFiles; i++)
+            {
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        var filePath = dtFiles.Rows[i]["Filename"].ToString();
+                        var fileName = Path.GetFileName(filePath);
+                        var fullPath = Path.GetFullPath(filePath);
+
+                        Invoke((Action)(() =>
+                        {
+                            toolStripStatusLabel1.Text = $"Processing [{fullPath}]";
+                            toolStripProgressBar1.Value = (i + 1) * 100 / totalFiles;                            
+                        }));
+
+                        try
+                        {
+                            var fc = File.ReadAllText(filePath);
+                            Invoke((Action)(() => dtFiles.Rows[i]["Content"] = fc));
+                        }
+                        catch (Exception ex)
+                        {
+                            string errorMessage = ex.Message;
+
+                            ShowErrorMessage(filePath, ex.Message);                             
+
+                            // Optionally, update the status label for error
+                            Invoke((Action)(() => toolStripStatusLabel1.Text = $"Error processing [{fullPath}]"));
+                        }
+                    });
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            this.gvFiles.OptionsView.ColumnAutoWidth = true;
+
+            // Clear the status label and progress bar after processing
+            Invoke((Action)(() =>
+            {
+                toolStripStatusLabel1.Text = "Completed";
+                toolStripProgressBar1.Value = 100;
+            }));
+
+            Invoke((Action)(() => this.gvFiles.OptionsView.ColumnAutoWidth = true));
         }
+
 
         private void btnAddExtension_Click(object sender, EventArgs e)
         {
@@ -530,5 +636,7 @@ namespace PowerSearch
         {
             LoadFilters();
         }
+
+      
     }
 }
